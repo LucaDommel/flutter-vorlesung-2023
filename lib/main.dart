@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vorlesung/blocs/counter/counter_bloc.dart';
+import 'package:flutter_vorlesung/repo/todo_repo.dart';
 import 'package:flutter_vorlesung/widgets/button_section.dart';
 import 'package:flutter_vorlesung/widgets/hit_counter.dart';
 import 'package:flutter_vorlesung/widgets/name_field.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_vorlesung/widgets/name_field.dart';
 import 'blocs/name/name_bloc.dart';
 
 void main() {
+  final todoRepository = TodoRepository();
+  final result = todoRepository.getTodos();
   runApp(const MyApp());
 }
 
@@ -78,17 +81,17 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            label: 'Todo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.folder),
-            label: 'Stuff',
-          ),
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.task_alt),
+              label: 'Todo',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.folder),
+              label: 'Stuff',
+            ),
           ],
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
